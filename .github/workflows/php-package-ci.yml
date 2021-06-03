@@ -7,6 +7,10 @@ jobs:
   checks:
     name: Checks
     runs-on: ubuntu-latest
+    services:
+      rabbitmq:
+        image: rabbitmq:latest
+
     strategy:
       matrix:
         php: [ 7.4, 8.0 ]
@@ -15,13 +19,6 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-      - uses: getong/rabbitmq-action@v1.2
-        with:
-          rabbitmq version: '3.8.2-management-alpine'
-          host port: 5672
-          rabbitmq user: 'guest'
-          rabbitmq password: 'guest'
-          rabbitmq vhost: '/'
 
       - run: composer update --no-interaction --no-suggest --no-progress --prefer-dist
 

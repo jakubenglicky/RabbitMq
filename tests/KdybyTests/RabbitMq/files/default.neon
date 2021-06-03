@@ -3,7 +3,7 @@ rabbitmq:
 
 	connection:
 		foo_connection:
-			host: 127.0.0.1
+			host: rabbitmq
 			port: 5672
 			user: guest
 			password: guest
